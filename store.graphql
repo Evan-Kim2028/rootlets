@@ -1,0 +1,8 @@
+type RootletStaticFields @entity {
+  id: ID!
+  attributes: String!
+  description: String!
+  imageUrl: String!
+  number: BigInt!
+  someAddress: String!
+} 
