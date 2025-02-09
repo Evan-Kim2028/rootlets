@@ -4,5 +4,17 @@ type RootletStaticFields @entity {
   description: String!
   imageUrl: String!
   number: BigInt!
-  someAddress: String!
-} 
+  accessories: String
+  head: String
+  mouth: String
+  eyes: String
+  theme: String
+}
+
+type RootletOwner @entity {
+  id: ID!
+  objectID: ID!
+  objectChange: String!
+  sender: String!
+  timestamp: BigInt!
+}

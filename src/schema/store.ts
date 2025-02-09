@@ -19,7 +19,11 @@ interface RootletStaticFieldsConstructorInput {
   description: String;
   imageUrl: String;
   number: BigInt;
-  someAddress: String;
+  accessories?: String;
+  head?: String;
+  mouth?: String;
+  eyes?: String;
+  theme?: String;
 }
 @Entity("RootletStaticFields")
 export class RootletStaticFields extends AbstractEntity  {
@@ -44,10 +48,55 @@ export class RootletStaticFields extends AbstractEntity  {
 	@Column("BigInt")
 	number: BigInt
 
+	@Column("String")
+	accessories?: String
+
+	@Column("String")
+	head?: String
+
+	@Column("String")
+	mouth?: String
+
+	@Column("String")
+	eyes?: String
+
+	@Column("String")
+	theme?: String
+  constructor(data: RootletStaticFieldsConstructorInput) {super()}
+  
+}
+
+
+interface RootletOwnerConstructorInput {
+  id: ID;
+  objectID: ID;
+  objectChange: String;
+  sender: String;
+  timestamp: BigInt;
+}
+@Entity("RootletOwner")
+export class RootletOwner extends AbstractEntity  {
+
+	@Required
+	@Column("ID")
+	id: ID
+
+	@Required
+	@Column("ID")
+	objectID: ID
+
 	@Required
 	@Column("String")
-	someAddress: String
-  constructor(data: RootletStaticFieldsConstructorInput) {super()}
+	objectChange: String
+
+	@Required
+	@Column("String")
+	sender: String
+
+	@Required
+	@Column("BigInt")
+	timestamp: BigInt
+  constructor(data: RootletOwnerConstructorInput) {super()}
   
 }
 
@@ -58,11 +107,24 @@ const source = `type RootletStaticFields @entity {
   description: String!
   imageUrl: String!
   number: BigInt!
-  someAddress: String!
-} `
+  accessories: String
+  head: String
+  mouth: String
+  eyes: String
+  theme: String
+}
+
+type RootletOwner @entity {
+  id: ID!
+  objectID: ID!
+  objectChange: String!
+  sender: String!
+  timestamp: BigInt!
+}`
 DatabaseSchema.register({
   source,
   entities: {
-    "RootletStaticFields": RootletStaticFields
+    "RootletStaticFields": RootletStaticFields,
+		"RootletOwner": RootletOwner
   }
 })
