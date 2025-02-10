@@ -72,6 +72,7 @@ interface RootletOwnerConstructorInput {
   objectID: ID;
   objectChange: String;
   sender: String;
+  digest: String;
   timestamp: BigInt;
 }
 @Entity("RootletOwner")
@@ -92,6 +93,10 @@ export class RootletOwner extends AbstractEntity  {
 	@Required
 	@Column("String")
 	sender: String
+
+	@Required
+	@Column("String")
+	digest: String
 
 	@Required
 	@Column("BigInt")
@@ -119,6 +124,7 @@ type RootletOwner @entity {
   objectID: ID!
   objectChange: String!
   sender: String!
+  digest: String!
   timestamp: BigInt!
 }`
 DatabaseSchema.register({

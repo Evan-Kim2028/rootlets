@@ -34,6 +34,7 @@ export function initRootletProcessor() {
                     id: `${change.objectId}-${ctx.timestamp.getTime()}`,
                     objectChange: change.type,
                     sender: change.sender,
+                    digest: ctx.txDigest,
                     timestamp: BigInt(ctx.timestamp.getTime())
                 }));
             }

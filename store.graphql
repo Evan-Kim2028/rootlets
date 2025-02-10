@@ -16,5 +16,6 @@ type RootletOwner @entity {
   objectID: ID!
   objectChange: String!
   sender: String!
+  digest: String!
   timestamp: BigInt!
 }
